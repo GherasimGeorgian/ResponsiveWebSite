@@ -3,18 +3,7 @@
 <!DOCTYPE html>
 
 <style>
-.tales {
-  width: 100%;
-}
-.carousel-inner{
-  width:100%;
-  max-height: 600px;
-}
-.carousel-caption {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
+
 
 </style>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -22,13 +11,14 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  
+    <link href="css/Custom-Cs.css" rel="stylesheet" />
     <title>Title</title>
 
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
+            <!--Navbar -->
             <nav class ="navbar navbar-default navbar-fixed-top" role="navigation">
                 <div class ="container">
                     <div class="navbar-header">
@@ -38,7 +28,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="Default.aspx"><span><img alt="LogoErrLoad" src="Images/logo3.jpg" height="30" /></span>MyTitle</a>
+                        <a class="navbar-brand" href="Default.aspx"><span><img alt="LogoErrLoad" src="Images/logo3.jpg" height="30" /></span> AllForYou</a>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
@@ -65,7 +55,7 @@
                     </div>
                 </div>
             </nav>
-
+            <!--Navbar -->
             <!--Carousel -->
             <div class="container" style="width: 100%;">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -113,6 +103,40 @@
                 </div>
              </div>
             <!--Carousel -->
+            <br/>
+             <!--Middle-content -->
+                <div class="container center">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <img class="img-circle" src="Images/innovation.jpg" alt="thumb01" width="140" height="140" />
+                            <h2>Innovation</h2>
+                            <p>Workplace creativity concerns the cognitive and behavioral processes applied when attempting to generate novel ideas. Workplace innovation concerns the processes applied when attempting to implement new ideas. Specifically, innovation involves some combination of problem/opportunity identification, the introduction, adoption or modification of new ideas germane to organizational needs, the promotion of these ideas, and the practical implementation of these ideas.</p>
+                            <p><a class="btn btn-default" href="#" role="button">View &raquo</a></p>
+                        </div>
+                        <div class="col-lg-4">
+                            <img class="img-circle" src="Images/work.jpg" alt="thumb01" width="140" height="140" />
+                            <h2>Work</h2>
+                            <p>There is always the danger that we may just do the work for the sake of the work. This is where the respect and the love and the devotion come in - that we do it to God, to Christ, and that's why we try to do it as beautifully as possible.</p>
+                            <p><a class="btn btn-default" href="#" role="button">View &raquo</a></p>
+                        </div>
+                        <div class="col-lg-4">
+                            <img class="img-circle" src="Images/talent.jpg" alt="thumb01" width="140" height="140" />
+                            <h2>Talent</h2>
+                            <p>Talent—when I use the word, I mean it as the rate at which you get better with effort. The rate at which you get better at soccer is your soccer talent. The rate at which you get better at math is your math talent. You know, given that you are putting forth a certain amount of effort. And I absolutely believe—and not everyone does, but I think most people do—that there are differences in talent among us: that we are not all equally talented” (Duckworth, 2016)</p>
+                            <p><a class="btn btn-default" href="#" role="button">View &raquo</a></p>
+                        </div>
+                    </div>
+                </div>
+             <!--Middle-content -->
+            <hr/>
+          <!--Footer -->
+            <footer>
+                <div class="container">
+                    <p class="pull-right"><a href="#">Back to top</a></p>
+                    <p>&copy; 2020 Geo &middot; <a href="Default.aspx">Home</a>&middot; <a href="#">About</a>&middot; <a href="#">Contact</a>&middot; <a href="#">Products</a></p>
+                </div>
+            </footer>
+          <!--Footer -->
         </div>
     </form>
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
