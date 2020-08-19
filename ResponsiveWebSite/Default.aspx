@@ -51,6 +51,7 @@
                                 </ul>
                             </li>
                             <li><a href="SignUp.aspx">Sign Up</a></li>
+                            <li><a href="SignIn.aspx">Sign In</a></li>
                         </ul>
                     </div>
                 </div>
@@ -72,7 +73,7 @@
                             <img src="Images/carousel1.jpg" alt="PH1" style="width: 100%;" class: "tales" />
                             <div class="carousel-caption">
                                 <h2>Inovatie</h2>
-                                <p><a class="btn btn-lg btn-primary" href="#" role="button">Join Us Today</a></p>
+                                <p><a class="btn btn-lg btn-primary" href="SignIn.aspx" role="button">Join Us Today</a></p>
                             </div>
                         </div>
 

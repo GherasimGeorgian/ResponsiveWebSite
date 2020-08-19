@@ -1,13 +1,16 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SignUp.aspx.cs" Inherits="SignUp" %>
 
+ 
 <!DOCTYPE html>
 
 <style>
-
+   
 
 </style>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" runat="server">
 <head runat="server">
+ 
+    
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -51,6 +54,7 @@
                                 </ul>
                             </li>
                             <li class="active"><a href="SignUp.aspx">Sign Up</a></li>
+                            <li><a href="SignIn.aspx">Sign In</a></li>
                         </ul>
                     </div>
                 </div>
@@ -66,12 +70,12 @@
 
                 <label class="col-xs-11">Password</label>
                 <div class="col-xs-11">
-                     <asp:TextBox ID="txtPassword" runat="server" class="form-control" placeholder="Password"></asp:TextBox>
+                     <asp:TextBox ID="txtPassword" runat="server" class="form-control" placeholder="Password" TextMode="Password"></asp:TextBox>
                 </div>
 
                 <label class="col-xs-11">Confirm Password</label>
                 <div class="col-xs-11">
-                     <asp:TextBox ID="txtConfirmPassword" runat="server" class="form-control" placeholder="Confirm Password"></asp:TextBox>
+                     <asp:TextBox ID="txtConfirmPassword" runat="server" class="form-control" placeholder="Confirm Password" TextMode="Password"></asp:TextBox>
                 </div>
 
                 <label class="col-xs-11">Name</label>
@@ -81,12 +85,32 @@
 
                 <label class="col-xs-11">Email</label>
                 <div class="col-xs-11">
-                     <asp:TextBox ID="txtEmail" runat="server" class="form-control" placeholder="Email"></asp:TextBox>
+                     <asp:TextBox ID="txtEmail" runat="server" class="form-control" placeholder="Email" TextMode="Email"></asp:TextBox>
                 </div>
 
                 <div class="col-xs-11 space-vert">
-                     <asp:Button ID="btnSignUp" runat="server" class="btn btn-success" Text="Sign Up" />
+                     <asp:Button ID="btnSignUp" runat="server" class="btn btn-success" Text="Sign Up" OnClick="btnSignUp_Click" />
+                     <asp:Label ID="lblMsg" runat="server"></asp:Label>
                 </div>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MyDataBaseConnectionString1 %>" DeleteCommand="DELETE FROM [Users] WHERE [UId] = @UId" InsertCommand="INSERT INTO [Users] ([Username], [Password], [Email], [Name]) VALUES (@Username, @Password, @Email, @Name)" ProviderName="<%$ ConnectionStrings:MyDataBaseConnectionString1.ProviderName %>" SelectCommand="SELECT [UId], [Username], [Password], [Email], [Name] FROM [Users]" UpdateCommand="UPDATE [Users] SET [Username] = @Username, [Password] = @Password, [Email] = @Email, [Name] = @Name WHERE [UId] = @UId">
+                    <DeleteParameters>
+                        <asp:Parameter Name="UId" Type="Int32" />
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="Username" Type="String" />
+                        <asp:Parameter Name="Password" Type="String" />
+                        <asp:Parameter Name="Email" Type="String" />
+                        <asp:Parameter Name="Name" Type="String" />
+                    </InsertParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="Username" Type="String" />
+                        <asp:Parameter Name="Password" Type="String" />
+                        <asp:Parameter Name="Email" Type="String" />
+                        <asp:Parameter Name="Name" Type="String" />
+                        <asp:Parameter Name="UId" Type="Int32" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
+
             </div>
             <!--SignUp -->
 
