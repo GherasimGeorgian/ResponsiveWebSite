@@ -91,14 +91,6 @@
                     </div>
 
 
-                     <div class="form-group">
-                        <div class="col-md-2"> </div>
-                        <div class="col-md-6">
-                            <asp:LinkButton ID="lbForgotPass" runat="server" PostBackUrl="~/ForgotPassword.aspx">Forgot Password...</asp:LinkButton>
-                        </div>
-                    </div>
-
-
                     <div class="form-group">
                         <div class="col-md-2"> </div>
                         <div class="col-md-6">
