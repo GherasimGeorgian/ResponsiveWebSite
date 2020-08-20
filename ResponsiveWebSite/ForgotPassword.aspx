@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SignIn.aspx.cs" Inherits="SignIn" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ForgotPassword.aspx.cs" Inherits="ForgotPassword" %>
 
 <!DOCTYPE html>
 
@@ -8,13 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="css/Custom-Cs.css" rel="stylesheet" />
-    <title>Title</title>
+    <title>ForgotPassword</title>
 
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-               <!--Navbar -->
+                <!--Navbar -->
             <nav class ="navbar navbar-default navbar-fixed-top" role="navigation">
                 <div class ="container">
                     <div class="navbar-header">
@@ -53,65 +53,33 @@
                 </div>
             </nav>
             <!--Navbar -->
-             <br/>
-             <!--SignInStart -->
-            <div class="continer">
-                <div class="form-horizontal">
-                    <h2 style="margin-left:40px">Login</h2>
-                    <hr/>
-                    <div class="form-group">
-                        <asp:Label ID="Label1" runat="server" CssClass="col-md-2 control-label" Text="UserName"></asp:Label>
-                        <div class="col-md-3">
-                            <asp:TextBox ID="UserName" CssClass="form-control" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorUserName" CssClass="text-danger" runat="server" ErrorMessage="The username filed is required" ControlToValidate="UserName"></asp:RequiredFieldValidator>
+        </div>
+        
+        <div class="container">
+            <div class="form-horizontal">
+                <h2>Recover Password</h2>
+                <hr/>
+                <h4>Please enter your email address, We will send you the instructions to reset your password.</h4>
+                <div class="form-group">
+                    <asp:Label ID="lblEmail" runat="server" CssClass="col-md-2 control-label" Text="Your Email"></asp:Label>
+                    <div class="col-md-3">
+                        <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorEmail" CssClass="text-danger" runat="server" ErrorMessage="Please enter your email!" ControlToValidate="txtEmail"></asp:RequiredFieldValidator>
+                    </div>
+                </div>
+                <div class="form-group">
+                     <div class="col-md-2"></div>
+                         <div class="col-md-3">
+                             <asp:Button ID="btmPassRec" CssClass="btn btn-default" runat="server" Text="Send" OnClick="btmPassRec_Click" />
+                             <asp:Label ID="lblPassRec" runat="server"></asp:Label>
                         </div>
-                    </div>
-                     <div class="form-group">
-                        <asp:Label ID="Label2" runat="server" CssClass="col-md-2 control-label" Text="Password"></asp:Label>
-                        <div class="col-md-3">
-                            <asp:TextBox ID="Password" CssClass="form-control" runat="server" TextMode="Password"></asp:TextBox>
-                             <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" CssClass="text-danger" runat="server" ErrorMessage="The password filed is required" ControlToValidate="Password"></asp:RequiredFieldValidator>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                      <div class="col-md-2"> </div>
-                        <div class="col-md-6">
-                            <asp:CheckBox ID="CheckBox1" runat="server" />
-                            <asp:Label ID="Label3" runat="server" CssClass=" control-label" Text="Remember me?"></asp:Label>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <div class="col-md-2"> </div>
-                        <div class="col-md-6">
-                            <asp:Button ID="Button1" runat="server" Text="Login" CssClass="btn btn-default" OnClick="Button1_Click" />
-                            <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/SignUp.aspx">Sign Up</asp:LinkButton>
-                      </div>
-                    </div>
-
-
-                     <div class="form-group">
-                        <div class="col-md-2"> </div>
-                        <div class="col-md-6">
-                            <asp:LinkButton ID="lbForgotPass" runat="server" PostBackUrl="~/ForgotPassword.aspx">Forgot Password...</asp:LinkButton>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <div class="col-md-2"> </div>
-                        <div class="col-md-6">
-                            <asp:Label ID="lblError" CssClass="text-danger" runat="server"></asp:Label>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-
-            <!--SignInStop  -->
-
-         <!--Footer -->
+        </div>
+          
+    </form>
+     <!--Footer -->
+           <hr/>
             <footer class="footer-pos">
                 <div class="container">
                     <p class="pull-right"><a href="#">Back to top</a></p>
@@ -120,9 +88,7 @@
             </footer>
           <!--Footer -->
 
-            </div>
-    </form>
-     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />

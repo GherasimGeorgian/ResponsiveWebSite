@@ -47,6 +47,9 @@
                                 </ul>
                             </li>
                             <li><a href="#">Manage</a></li>
+                            <li>
+                                <asp:Button ID="btnAdminLogout" runat="server" CssClass="btn btn-default navbar-btn" Text="Logout" OnClick="btnAdminLogout_Click" />
+                            </li>
                         </ul>
                     </div>
                 </div>
