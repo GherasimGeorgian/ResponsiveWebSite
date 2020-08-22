@@ -1,0 +1,130 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class AddSize : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack) {
+            BindBrand();
+            BindMainCategory();
+            BindGender();
+        }
+    }
+
+    private void BindGender()
+    {
+        String CS = ConfigurationManager.ConnectionStrings["MyDataBaseConnectionString1"].ConnectionString;
+        using (SqlConnection con = new SqlConnection(CS))
+        {
+            SqlCommand sqlcmd = new SqlCommand("select * from tblGender", con);
+            con.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(sqlcmd);
+
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows.Count != 0)
+            {
+                ddlGender.DataSource = dt;
+                ddlGender.DataTextField = "GenderName";
+                ddlGender.DataValueField = "GenderID";
+                ddlGender.DataBind();
+                ddlGender.Items.Insert(0, new ListItem("-Select-", "0"));
+            }
+        }
+    }
+
+    private void BindMainCategory()
+    {
+        String CS = ConfigurationManager.ConnectionStrings["MyDataBaseConnectionString1"].ConnectionString;
+        using (SqlConnection con = new SqlConnection(CS))
+        {
+            SqlCommand sqlcmd = new SqlCommand("select * from tblCategories", con);
+            con.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(sqlcmd);
+
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows.Count != 0)
+            {
+                ddlCategory.DataSource = dt;
+                ddlCategory.DataTextField = "CatName";
+                ddlCategory.DataValueField = "CatID";
+                ddlCategory.DataBind();
+                ddlCategory.Items.Insert(0, new ListItem("-Select-", "0"));
+            }
+        }
+    }
+
+    private void BindBrand()
+    {
+        String CS = ConfigurationManager.ConnectionStrings["MyDataBaseConnectionString1"].ConnectionString;
+        using (SqlConnection con = new SqlConnection(CS))
+        {
+            SqlCommand sqlcmd = new SqlCommand("select * from tblBrands", con);
+            con.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(sqlcmd);
+
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows.Count != 0)
+            {
+                ddlBrand.DataSource = dt;
+                ddlBrand.DataTextField = "Name";
+                ddlBrand.DataValueField = "BrandID";
+                ddlBrand.DataBind();
+                ddlBrand.Items.Insert(0, new ListItem("-Select-", "0"));
+            }
+        }
+    }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        String CS = ConfigurationManager.ConnectionStrings["MyDataBaseConnectionString1"].ConnectionString;
+        using (SqlConnection con = new SqlConnection(CS))
+        {
+            SqlCommand sqlcmd = new SqlCommand("insert into tblSizes values('"+txtSizeName.Text+"','"+ddlBrand.SelectedItem.Value+"','"+ddlCategory.SelectedItem.Value+"','"+ddlSubCategory.SelectedItem.Value+"','"+ddlGender.SelectedItem.Value+"')", con);
+            con.Open();
+            sqlcmd.ExecuteNonQuery();
+            txtSizeName.Text = string.Empty;
+            ddlBrand.ClearSelection();
+            ddlBrand.Items.FindByValue("0").Selected = true;
+            ddlCategory.ClearSelection();
+            ddlCategory.Items.FindByValue("0").Selected = true;
+            ddlSubCategory.ClearSelection();
+            ddlSubCategory.Items.FindByValue("0").Selected = true;
+            ddlGender.ClearSelection();
+            ddlGender.Items.FindByValue("0").Selected = true;
+        }
+    }
+
+    protected void ddlCategory_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        int MainCategoryID = Convert.ToInt32(ddlCategory.SelectedItem.Value);
+        String CS = ConfigurationManager.ConnectionStrings["MyDataBaseConnectionString1"].ConnectionString;
+        using (SqlConnection con = new SqlConnection(CS))
+        {
+            SqlCommand sqlcmd = new SqlCommand("select * from tblSubCategories where MainCatID='"+ddlCategory.SelectedItem.Value+"'", con);
+            con.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(sqlcmd);
+
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows.Count != 0)
+            {
+                ddlSubCategory.DataSource = dt;
+                ddlSubCategory.DataTextField = "SubCatName";
+                ddlSubCategory.DataValueField = "SubCatID";
+                ddlSubCategory.DataBind();
+                ddlSubCategory.Items.Insert(0, new ListItem("-Select-", "0"));
+            }
+        }
+    }
+}
