@@ -16,6 +16,25 @@ public partial class AddSize : System.Web.UI.Page
             BindBrand();
             BindMainCategory();
             BindGender();
+            BindSizeRptr();
+        }
+    }
+   
+    private void BindSizeRptr()
+    {
+        String CS = ConfigurationManager.ConnectionStrings["MyDataBaseConnectionString1"].ConnectionString;
+        using (SqlConnection con = new SqlConnection(CS))
+        {
+            using (SqlCommand cmd = new SqlCommand("select A.*,B.*,C.*,D.*,E.* from tblSizes A inner join tblCategories B on B.CatID=A.CategoryID inner join tblBrands C on C.BrandID=A.BrandID inner join tblSubCategories D on D.SubCatID=A.SubCategoryID inner join tblGender E on E.GenderID=A.GenderID", con))
+            {
+                using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                {
+                    DataTable dtSize = new DataTable();
+                    sda.Fill(dtSize);
+                    rptrSize.DataSource = dtSize;
+                    rptrSize.DataBind();
+                }
+            }
         }
     }
 
@@ -103,6 +122,7 @@ public partial class AddSize : System.Web.UI.Page
             ddlGender.ClearSelection();
             ddlGender.Items.FindByValue("0").Selected = true;
         }
+        BindSizeRptr();
     }
 
     protected void ddlCategory_SelectedIndexChanged(object sender, EventArgs e)

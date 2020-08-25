@@ -37,7 +37,16 @@
                                   
                                 </ul>
                             </li>
-                            <li><a href="#">Manage</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="AddBrand.aspx">Add Brand</a></li>
+                                    <li><a href="AddCategory.aspx">Add Category</a></li>
+                                    <li><a href="AddSubCategory.aspx">Add SubCategory</a></li>
+                                    <li><a href="AddGender.aspx">Add Gender</a></li>
+                                    <li><a href="AddSize.aspx">Add Size</a></li>
+                                </ul>
+                            </li>
                             <li>
                                 <asp:Button ID="btnAdminLogout" runat="server" CssClass="btn btn-default navbar-btn" Text="Logout" OnClick="btnAdminLogout_Click" />
                             </li>

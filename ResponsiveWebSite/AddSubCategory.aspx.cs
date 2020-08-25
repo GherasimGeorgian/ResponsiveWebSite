@@ -15,6 +15,26 @@ public partial class AddSubCategory : System.Web.UI.Page
         if (!IsPostBack)
         {
             BindMainCategory();
+            BindSubCatRptr();
+        }
+    }
+
+    private void BindSubCatRptr()
+    {
+
+        String CS = ConfigurationManager.ConnectionStrings["MyDataBaseConnectionString1"].ConnectionString;
+        using (SqlConnection con = new SqlConnection(CS))
+        {
+            using (SqlCommand cmd = new SqlCommand("select A.*,B.* from tblSubCategories A inner join tblCategories B on B.CatID=A.MainCatID", con))
+            {
+                using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                {
+                    DataTable dtSubCategories = new DataTable();
+                    sda.Fill(dtSubCategories);
+                    rptrSubCategory.DataSource = dtSubCategories;
+                    rptrSubCategory.DataBind();
+                }
+            }
         }
     }
 
@@ -52,5 +72,6 @@ public partial class AddSubCategory : System.Web.UI.Page
             ddlCategory.ClearSelection();
             ddlCategory.Items.FindByValue("0").Selected = true;
         }
+        BindSubCatRptr();
     }
 }

@@ -12,7 +12,7 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorPName" CssClass="text-danger" runat="server" ErrorMessage="This filed is required" ControlToValidate="txtGenderName"></asp:RequiredFieldValidator>
                 </div>
             </div>
-        </div>
+       
 
         <div class="form-group">
             <div class="col-md-2"></div>
@@ -20,6 +20,38 @@
                 <asp:Button ID="btnAdd" runat="server" Text="Add" CssClass="btn btn-default" OnClick="btnAdd_Click"/>
 
             </div>
+        </div>
+            </div>
+        <h1>Gender</h1>
+        <hr/>
+        <div class="panel panel-default">
+            <div class="panel-heading">All genders</div>
+
+            <asp:Repeater ID="rptrGender" runat="server">
+                <HeaderTemplate>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Gender</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                </HeaderTemplate>
+                <ItemTemplate>
+                    <tr>
+                        <th><%# Eval("GenderID") %></th>
+                        <td><%# Eval("GenderName") %></td>
+                        <td>Edit</td>
+                    </tr>
+                </ItemTemplate>
+                <FooterTemplate>
+                    </tbody>
+            </table>
+                </FooterTemplate>
+            </asp:Repeater>
+
         </div>
     </div>
 
