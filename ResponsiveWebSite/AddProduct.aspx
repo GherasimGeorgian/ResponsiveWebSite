@@ -43,7 +43,7 @@
             <div class="form-group">
                 <asp:Label ID="Label5" runat="server" CssClass="col-md-2 control-label" Text="Category"></asp:Label>
                 <div class="col-md-3">
-                    <asp:DropDownList ID="ddlCategory" CssClass="form-control" runat="server"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlCategory" CssClass="form-control" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCategory_SelectedIndexChanged"></asp:DropDownList>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorCategory" CssClass="text-danger" runat="server" ErrorMessage="This filed is required" ControlToValidate="ddlCategory" InitialValue="0"></asp:RequiredFieldValidator>
                 </div>
             </div>
@@ -52,7 +52,7 @@
             <div class="form-group">
                 <asp:Label ID="Label6" runat="server" CssClass="col-md-2 control-label" Text="Sub Category"></asp:Label>
                 <div class="col-md-3">
-                    <asp:DropDownList ID="ddlSubCategory" CssClass="form-control" runat="server"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlSubCategory" CssClass="form-control" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlSubCategory_SelectedIndexChanged"></asp:DropDownList>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorSubCategory" CssClass="text-danger" runat="server" ErrorMessage="This filed is required" ControlToValidate="ddlSubCategory" InitialValue="0"></asp:RequiredFieldValidator>
                 </div>
             </div>
@@ -61,8 +61,8 @@
             <div class="form-group">
                 <asp:Label ID="Label19" runat="server" CssClass="col-md-2 control-label" Text="Gender"></asp:Label>
                 <div class="col-md-3">
-                    <asp:DropDownList ID="dllGender" CssClass="form-control" runat="server"></asp:DropDownList>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorGender" CssClass="text-danger" runat="server" ErrorMessage="This filed is required" ControlToValidate="dllGender" InitialValue="0"></asp:RequiredFieldValidator>
+                    <asp:DropDownList ID="ddlGender" CssClass="form-control" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlGender_SelectedIndexChanged"></asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorGender" CssClass="text-danger" runat="server" ErrorMessage="This filed is required" ControlToValidate="ddlGender" InitialValue="0"></asp:RequiredFieldValidator>
                 </div>
             </div>
 
@@ -70,7 +70,7 @@
             <div class="form-group">
                 <asp:Label ID="Label7" runat="server" CssClass="col-md-2 control-label" Text="Size"></asp:Label>
                 <div class="col-md-3">
-                    <asp:TextBox ID="txtDynamicSize" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:CheckBoxList ID="cblSize" CssClass="form-control" runat="server" RepeatDirection="Horizontal"></asp:CheckBoxList>
 
                 </div>
             </div>
