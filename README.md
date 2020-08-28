@@ -10,4 +10,4 @@ To Do
 
 - Shopping Site-Dynamic Image carousel❌
 
--Site-Bind Product,Size Details-Repeater❌
+- Site-Bind Product,Size Details-Repeater❌
