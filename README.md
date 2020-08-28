@@ -9,3 +9,5 @@ To Do
 - Designing Product View Page❌
 
 - Shopping Site-Dynamic Image carousel❌
+
+-Site-Bind Product,Size Details-Repeater❌
