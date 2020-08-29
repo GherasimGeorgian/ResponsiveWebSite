@@ -6,7 +6,7 @@ To Do
 - Insert Size & Quantity- Multiple Image Upload✔️
 - View All Products-Thumbnails-Tile VIew✔️
 - Bind All Products with Repeater from Multiple Tables✔️
-- Designing Product View Page❌
+- Designing Product View Page✔️
 
 - Shopping Site-Dynamic Image carousel❌
 
