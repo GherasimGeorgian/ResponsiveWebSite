@@ -11,3 +11,9 @@ To Do
 - Shopping Site-Dynamic Image carousel❌
 
 - Site-Bind Product,Size Details-Repeater❌
+
+- Add to Cart❌
+
+- Cart Count-Badges-JQuery Click❌
+
+- Cart Page Design-Media Object❌
