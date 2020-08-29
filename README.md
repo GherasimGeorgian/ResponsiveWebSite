@@ -5,7 +5,9 @@ To Do
 - Insert Products - Scope Identity ✔️
 - Insert Size & Quantity- Multiple Image Upload✔️
 - View All Products-Thumbnails-Tile VIew✔️
-- Bind All Products with Repeater from Multiple Tables❌
+- Bind All Products with Repeater from Multiple Tables✔️
 - Designing Product View Page❌
 
 - Shopping Site-Dynamic Image carousel❌
+
+- Site-Bind Product,Size Details-Repeater❌
