@@ -8,7 +8,7 @@ To Do
 - Bind All Products with Repeater from Multiple Tables✔️
 - Designing Product View Page✔️
 
-- Shopping Site-Dynamic Image carousel❌
+- Shopping Site-Dynamic Image carousel✔️
 
 - Site-Bind Product,Size Details-Repeater❌
 
