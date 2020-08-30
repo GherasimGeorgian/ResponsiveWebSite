@@ -6,8 +6,14 @@ To Do
 - Insert Size & Quantity- Multiple Image Upload✔️
 - View All Products-Thumbnails-Tile VIew✔️
 - Bind All Products with Repeater from Multiple Tables✔️
-- Designing Product View Page❌
+- Designing Product View Page✔️
 
 - Shopping Site-Dynamic Image carousel❌
 
 - Site-Bind Product,Size Details-Repeater❌
+
+- Add to Cart❌
+
+- Cart Count-Badges-JQuery Click❌
+
+- Cart Page Design-Media Object❌
