@@ -10,10 +10,14 @@ To Do
 
 - Shopping Site-Dynamic Image carousel✔️
 
-- Site-Bind Product,Size Details-Repeater❌
+- Site-Bind Product,Size Details-Repeater✔️
 
-- Add to Cart❌
+- Add to Cart✔️
 
 - Cart Count-Badges-JQuery Click❌
 
 - Cart Page Design-Media Object❌
+
+- Cart-Dynamic Data-Sever Currency❌
+
+- Cart-Bind Price Data-Remove Item❌
