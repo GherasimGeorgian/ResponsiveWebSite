@@ -12,7 +12,7 @@ To Do
 
 - Site-Bind Product,Size Details-Repeater✔️
 
-- Add to Cart❌
+- Add to Cart✔️
 
 - Cart Count-Badges-JQuery Click❌
 
