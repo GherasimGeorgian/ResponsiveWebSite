@@ -14,6 +14,14 @@
     <link href="css/Custom-Cs.css" rel="stylesheet" />
     <title>Title</title>
 
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function myfunction() {
+            $("#btnCart").click(function myfunction() {
+                window.location.href = "/Cart.aspx";
+            });
+        });
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -34,6 +42,8 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="active"><a href="Default.aspx">Home</a></li>
                             <li><a href="#">About</a></li>
+                             <li><a href="Products.aspx">All Products</a></li>
+                            <li role="separator" class="divider"></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
@@ -50,8 +60,16 @@
                                     <li><a href="#">Denims</a></li>
                                 </ul>
                             </li>
-                            <li><a href="SignUp.aspx">Sign Up</a></li>
-                            <li><a href="SignIn.aspx">Sign In</a></li>
+                            <li>
+                                <button id="btnCart" class="btn btn-primary navbar-btn" type="button">
+                                    Cart<span class="badge" id="pcount" runat="server"></span>
+                                </button>
+                            </li>
+                            <li id="btnSignIn" runat="server"><a href="SignUp.aspx">Sign In</a></li>
+                            <li id="btnSignUp" runat="server"><a href="SignIn.aspx">Sign Up</a></li>
+                            <li>
+                                <asp:Button ID="btnSignOut" runat="server" CssClass="btn btn-default navbar-btn" Text="Logout" OnClick="btnSignOut_Click" />
+                            </li>
                         </ul>
                     </div>
                 </div>

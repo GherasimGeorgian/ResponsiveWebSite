@@ -9,13 +9,16 @@ public partial class User : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        BindCartNumber();
         if (Session["UserName"] != null)
         {
-
+            btnAdminLogout.Visible = true;
+            btnSignIn.Visible = false;
         }
         else
         {
-            Response.Redirect("~/SignIn.aspx");
+            btnAdminLogout.Visible = false;
+            btnSignIn.Visible = true;
         }
     }
 
@@ -23,5 +26,25 @@ public partial class User : System.Web.UI.MasterPage
     {
         Session["UserName"] = null;
         Response.Redirect("~/Default.aspx");
+    }
+
+    protected void btnSignIn_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/SignIn.aspx");
+    }
+    private void BindCartNumber()
+    {
+
+        if (Request.Cookies["CartPID"] != null)
+        {
+            string CookiePID = Request.Cookies["CartPID"].Value.Split('=')[1];
+            string[] ProductArray = CookiePID.Split(',');
+            int productCount = ProductArray.Length;
+            pcount.InnerText = productCount.ToString();
+        }
+        else
+        {
+            pcount.InnerText = 0.ToString();
+        }
     }
 }

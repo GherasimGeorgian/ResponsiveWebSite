@@ -108,4 +108,58 @@ public partial class ProductView : System.Web.UI.Page
             }
         }
     }
+
+    protected void btnAddToCart_Click(object sender, EventArgs e)
+    {
+        Int64 PID = Convert.ToInt64(Request.QueryString["PID"]);
+        string SelectedSize = string.Empty;
+
+        foreach (RepeaterItem item in rptrProductDetails.Items) {
+            if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem) {
+                var rbList = item.FindControl("rblSize") as RadioButtonList;
+                SelectedSize = rbList.SelectedValue;
+
+                var lblError = item.FindControl("lblError") as Label;
+                lblError.Text = "";
+            }
+        }
+
+
+        if (SelectedSize != "")
+        {
+           
+            if (Request.Cookies["CartPID"] != null)
+            {
+                string CookiePID = Request.Cookies["CartPID"].Value.Split('=')[1];
+                CookiePID = CookiePID + "," + PID + "-" + SelectedSize;
+
+                HttpCookie CartProducts = new HttpCookie("CartPID");
+                CartProducts.Values["CartPID"] = CookiePID;
+                CartProducts.Expires = DateTime.Now.AddDays(30);
+                Response.Cookies.Add(CartProducts);
+
+
+            }
+            else
+            {
+                HttpCookie CartProducts = new HttpCookie("CartPID");
+                CartProducts.Values["CartPID"] = PID.ToString() + "-" + SelectedSize;
+                CartProducts.Expires = DateTime.Now.AddDays(30);
+                Response.Cookies.Add(CartProducts);
+            }
+            Response.Redirect("~/ProductView.aspx?PID=" + PID);
+        }
+        else
+        {
+            foreach (RepeaterItem item in rptrProductDetails.Items)
+            {
+                if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
+                {
+                    var lblError = item.FindControl("lblError") as Label;
+                    lblError.Text = "Please select a size!";
+                    
+                }
+            }
+        }
+    }
 }

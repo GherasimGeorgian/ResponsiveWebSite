@@ -9,7 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="css/Custom-Cs.css" rel="stylesheet" />
     <title>Title</title>
-
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function myfunction() {
+            $("#btnCart").click(function myfunction() {
+                window.location.href = "/Cart.aspx";
+            });
+        });
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -30,6 +37,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="Default.aspx">Home</a></li>
                             <li><a href="Products.aspx">All Products</a></li>
+                            <li role="separator" class="divider"></li>
                             <li><a href="#">About</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
@@ -47,7 +55,13 @@
                                     <li><a href="#">Denims</a></li>
                                 </ul>
                             </li>
+                             <li>
+                                <button id="btnCart" class="btn btn-primary navbar-btn" type="button">
+                                    Cart<span class="badge" id="pcount" runat="server"></span>
+                                </button>
+                            </li>
                             <li>
+                                <asp:Button ID="btnSignIn" CssClass="btn btn-default navbar-btn" runat="server" Text="Sign In" OnClick="btnSignIn_Click" />
                                 <asp:Button ID="btnSignOut" CssClass="btn btn-default navbar-btn" runat="server" Text="Sign Out" OnClick="btnSignOut_Click" />
                             </li>
                            
