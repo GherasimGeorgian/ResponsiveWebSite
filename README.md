@@ -14,7 +14,7 @@ To Do
 
 - Add to Cart✔️
 
-- Cart Count-Badges-JQuery Click❌
+- Cart Count-Badges-JQuery Click✔️
 
 - Cart Page Design-Media Object❌
 
