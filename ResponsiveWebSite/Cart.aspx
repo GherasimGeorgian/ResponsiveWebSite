@@ -3,28 +3,34 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div style="padding-top: 50px;">
         <div class="col-md-8">
-            <h5 class="proNameViewCart">My Cart (2 Items)</h5>
+            <h5 class="proNameViewCart" runat="server" id="h5NoItems"></h5>
+            <asp:Repeater ID="rptrCartProducts" runat="server">
+                <ItemTemplate>
+
+                
             <div class="media" style="border: 1px solid #eaeaec;">
                 <div class="media-left">
-                    <a>
-                        <img class="media-object" width="100px;" src="Images/ProductImages/5/Pantofi adidas03.jpg" alt="img">
+                    <a href="ProductView.aspx?PID=<%#Eval("PID") %>" target="_blank">
+                        <img class="media-object" width="100px;" src="Images/ProductImages/<%#Eval("PID") %>/<%#Eval("Name") %><%#Eval("Extension") %>" alt="<%#Eval("Name") %>"  onerror="this.src='Images/noimage.jpg';this.onerror='';">
                     </a>
                    </div>
                         <div class="media-body">
-                            <h5 class="media-heading proNameViewCart">Media heading
+                            <h5 class="media-heading proNameViewCart"><%#Eval("Name") %>
                             </h5>
-                            <p class="proPriceDiscountView">Size : 34</p>
-                            <span class="proPriceView">Rs: 1234</span>
-                            <span class="proOgPriceView">3434</span>
+                            <p class="proPriceDiscountView">Size : <%#Eval("SizeNameP") %></p>
+                            <span class="proPriceView"><%#Eval("PSelPrice","{0:c}") %></span>
+                            <span class="proOgPriceView"><%#Eval("PPrice","{0:0,00}") %></span>
                             <p>
                                  <asp:Button ID="btnRemoveItem" runat="server" CssClass="removeButton" OnClick="btnRemoveItem_Click" Text="Remove" />
                             </p>
                         </div>
                    
                 </div>
+                    </ItemTemplate>
+                </asp:Repeater>
 
             </div>
-        <div class="col-md-4">
+        <div class="col-md-4" runat="server" id="divPriceDetails">
             <div style="border-bottom: 1px solid #eaeaec">
                 <h5 class="">Price details</h5>
                 <div>
