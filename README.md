@@ -16,8 +16,8 @@ To Do
 
 - Cart Count-Badges-JQuery Click✔️
 
-- Cart Page Design-Media Object❌
+- Cart Page Design-Media Object✔️
 
-- Cart-Dynamic Data-Sever Currency❌
+- Cart-Dynamic Data-Sever Currency✔️
 
 - Cart-Bind Price Data-Remove Item❌
