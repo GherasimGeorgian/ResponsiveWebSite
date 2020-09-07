@@ -20,4 +20,4 @@ To Do
 
 - Cart-Dynamic Data-Sever Currency✔️
 
-- Cart-Bind Price Data-Remove Item❌
+- Cart-Bind Price Data-Remove Item✔️
