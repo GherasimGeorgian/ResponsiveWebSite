@@ -21,3 +21,11 @@ To Do
 - Cart-Dynamic Data-Sever Currency✔️
 
 - Cart-Bind Price Data-Remove Item✔️
+
+- Payment Page Design-Togglable Tabs❌
+
+- Payment Page-Purchase Tracking❌
+
+- Paytm Payment Gateway Integration❌
+
+- Paytm Payment Gateway Response❌
