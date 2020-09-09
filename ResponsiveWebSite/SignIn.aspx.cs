@@ -47,12 +47,34 @@ public partial class SignIn : System.Web.UI.Page
                 UType = dt.Rows[0][5].ToString().Trim();
                 if (UType == "U") {
                     Session["UserName"] = UserName.Text;
-                    Response.Redirect("~/UserHome.aspx");
+                    if (Request.QueryString["rurl"] != null)
+                    {
+                        if (Request.QueryString["rurl"] == "cart")
+                        {
+                            Response.Redirect("~/Cart.aspx");
+                        }
+                    }
+                    else
+                    {
+                        Response.Redirect("~/UserHome.aspx");
+                    }
+                    
                 }
                 if (UType == "A")
                 {
                     Session["UserName"] = UserName.Text;
-                    Response.Redirect("~/AdminHome.aspx");
+                    if (Request.QueryString["rurl"] != null)
+                    {
+                        if (Request.QueryString["rurl"] == "cart")
+                        {
+                            Response.Redirect("~/Cart.aspx");
+                        }
+                    }
+                    else
+                    {
+                        Response.Redirect("~/AdminHome.aspx");
+                    }
+                    
                 }
 
 
