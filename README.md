@@ -22,7 +22,7 @@ To Do
 
 - Cart-Bind Price Data-Remove Item✔️
 
-- Payment Page Design-Togglable Tabs❌
+- Payment Page Design-Togglable Tabs✔️
 
 - Payment Page-Purchase Tracking❌
 
