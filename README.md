@@ -24,10 +24,12 @@ To Do
 
 - Payment Page Design-Togglable Tabs✔️
 
-- Payment Page-Purchase Tracking❌
+- Payment Page-Purchase Tracking✔️
 
 - Paytm Payment Gateway Integration❌
 
 - Paytm Payment Gateway Response❌
 
 - Migrate MDF Database to SQL Server❌
+
+- Migrating to Bootstrap 4.5 Navbar❌
