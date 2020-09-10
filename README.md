@@ -29,3 +29,5 @@ To Do
 - Paytm Payment Gateway Integration❌
 
 - Paytm Payment Gateway Response❌
+
+- Migrate MDF Database to SQL Server❌
