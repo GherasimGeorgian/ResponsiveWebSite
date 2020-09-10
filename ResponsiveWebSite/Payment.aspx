@@ -1,6 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User.master" AutoEventWireup="true" CodeFile="Payment.aspx.cs" Inherits="Payment" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <asp:HiddenField ID="hdPidSizeID" runat="server" />
+    <asp:HiddenField ID="hdCartAmonut" runat="server" />
+    <asp:HiddenField ID="hdCartDiscount" runat="server" />
+    <asp:HiddenField ID="hdTotalPayed" runat="server" />
     <div style="padding-top: 20px;">
         <div class="col-md-9">
             <div class="form-horizontal">
@@ -37,20 +41,21 @@
                 <h5 class="">Price details</h5>
                 <div>
                     <label>Cart total</label>
-                    <span class="pull-right priceGray" id="spanCartTotal" runat="server">2500.00</span>
+                    <span class="pull-right priceGray" id="spanCartTotal" runat="server"></span>
                 </div>
                 <div>
                     <label>Cart discount</label>
-                    <span class="pull-right priceGreen" id="spanDiscount" runat="server">400.00</span>
+                    <span class="pull-right priceGreen" id="spanDiscount" runat="server"></span>
                 </div>
             </div>
             <div>
                 <div class="proPriceView">
                     <label>Total</label>
-                    <span class="pull-right" id="spanTotal" runat="server">2100.00</span>
+                    <span class="pull-right" id="spanTotal" runat="server"></span>
                 </div>
             </div>
         </div>
+
         <div class="col-md-12">
             <h3>Choose Payment Mode</h3>
              <hr/>
@@ -64,6 +69,7 @@
                 <div id="wallets" class="tab-pane fade in active">
                     <h3>Home</h3>
                     <p>Some content.</p>
+                    <asp:Button ID="btnPaytm" OnClick="btnPaytm_Click" runat="server" Text="Pay with Paytm" />
                 </div>
                 <div id="cards" class="tab-pane fade">
                     <h3>Menu 1</h3>
