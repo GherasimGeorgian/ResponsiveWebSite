@@ -7,10 +7,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using PayPal.Api;
 using paytm;
 
-public partial class Payment : System.Web.UI.Page
+public partial class PaymentPG : System.Web.UI.Page
 {
+    private PayPal.Api.Payment payment;
+    DataTable dt = new DataTable();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["USERNAME"] != null)
@@ -25,6 +28,123 @@ public partial class Payment : System.Web.UI.Page
         }
         
     }
+  
+    public void PaymentWithPaypal(string Cancel = null)
+    {
+        APIContext apiContext = PaypalConfiguration.GetAPIContext();
+        ////try
+        ////{
+        //A resource representing a Payer that funds a payment Payment Method as paypal  
+        //Payer Id will be returned when payment proceeds or click to pay  
+        string payerId = Request.Params["PayerID"];
+        try
+        {
+
+            
+            if (string.IsNullOrEmpty(payerId))
+            {
+                string baseUrl = Request.Url.Scheme + "://" + Request.Url.Authority +
+                    "/PaymentPG?";
+                var Guid = Convert.ToString((new Random()).Next(1000000000));
+                var createPayment = CreatePayment(apiContext, baseUrl + "guid=" + Guid);
+
+                var links = createPayment.links.GetEnumerator();
+                string paypalRedirectURL = null;
+                while (links.MoveNext()) {
+                    Links lnk = links.Current;
+                    if (lnk.rel.ToLower().Trim().Equals("approval_url")) {
+                        paypalRedirectURL = lnk.href;
+                        HttpContext.Current.Response.Redirect(paypalRedirectURL);
+                    }
+                }
+                
+            }
+            else{
+                var guid = Request.Params["guid"];
+                var executePayment = ExecutePayment(apiContext, payerId, Session[guid] as string);
+
+                if (executePayment.ToString().ToLower()!= "approved") {
+                    Response.Redirect("~/FailureView.aspx");
+                }
+             }
+        }
+        catch (PayPal.PaymentsException ex)
+        {
+            Response.Redirect("~/FailurePayment.aspx");
+        }
+        Response.Redirect("~/SuccessPayment.aspx");
+    }
+
+    private object ExecutePayment(APIContext apicontext, string payerId, string PaymentId)
+    {
+        var paymentExecution = new PaymentExecution() { payer_id = payerId };
+        payment = new Payment() { id = PaymentId };
+        return payment.Execute(apicontext, paymentExecution);
+    }
+
+    private Payment CreatePayment(APIContext apicontext, string redirectUrl)
+    {
+       // Int64 Total = 0;
+        var ItemList = new ItemList() { items = new List<Item>() };
+        //  if (Request.Cookies["CartPID"] != null)
+        //  {
+       
+            ItemList.items.Add(new Item()
+            {
+                name = "gdgdhd",
+                currency = "USD",
+                price = "0.12",
+                quantity = "1",
+                sku = "sku"
+
+            });
+    
+        //Total += Convert.ToInt64(dt.Rows[i]["PSelPrice"]);
+
+
+        var payer = new Payer() { payment_method = "paypal" };
+
+            var redirUrl = new RedirectUrls()
+            {
+                cancel_url = redirectUrl + "&Cancel=true",
+                return_url = redirectUrl
+            };
+            var details = new Details()
+            {
+                tax = "1",
+                shipping = "1",
+                subtotal = "0.12"
+
+            };
+            var amount = new Amount()
+            {
+                currency = "USD",
+                total = "2.12", /*Total.ToString(),*/
+                details = details
+            };
+            
+            var transactionList = new List<Transaction>();
+
+            transactionList.Add(new Transaction()
+            {
+                description = "Transaction Description",
+                invoice_number = "#100000",
+                amount = amount,
+                item_list = ItemList
+
+            });
+            payment = new Payment()
+            {
+                intent = "sale",
+                payer = payer,
+                transactions = transactionList,
+                redirect_urls = redirUrl
+            };
+     //   }
+        return payment.Create(apicontext);
+     
+    }
+
     public void BindPriceData()
     {
         if (Request.Cookies["CartPID"] != null)
@@ -34,7 +154,7 @@ public partial class Payment : System.Web.UI.Page
             if (CookieDataArray.Length > 0)
             {
               
-                DataTable dt = new DataTable();
+                
                 Int64 CartTotal = 0;
                 Int64 Total = 0;
                 for (int i = 0; i < CookieDataArray.Length; i++)
@@ -166,5 +286,10 @@ public partial class Payment : System.Web.UI.Page
         outputHTML += "</body>";
         outputHTML += "</html>";
         Response.Write(outputHTML);
+    }
+
+    protected void btnPayPal_Click(object sender, EventArgs e)
+    {
+        PaymentWithPaypal(); 
     }
 }

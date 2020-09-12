@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User.master" AutoEventWireup="true" CodeFile="Payment.aspx.cs" Inherits="Payment" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User.master" AutoEventWireup="true" CodeFile="PaymentPG.aspx.cs" Inherits="PaymentPG" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <asp:HiddenField ID="hdPidSizeID" runat="server" />
@@ -80,6 +80,7 @@
                 <div id="cards" class="tab-pane fade">
                     <h3>Menu 1</h3>
                     <p>Some content in menu 1.</p>
+                    <asp:Button ID="btnPayPal" OnClick="btnPayPal_Click" runat="server" Text="Pay with PayPal" />
                 </div>
                 <div id="cod" class="tab-pane fade">
                     <h3>Menu 2</h3>
