@@ -26,9 +26,13 @@ To Do
 
 - Payment Page-Purchase Tracking✔️
 
-- Paytm Payment Gateway Integration❌
+- Paytm Payment Gateway Integration⌛ - paytm.com not working
 
-- Paytm Payment Gateway Response❌
+- Paytm Payment Gateway Response⌛ - paytm.com not working
+
+- PayPal Payment Template✔️
+
+- PayPal Payment Shop Products❌
 
 - Migrate MDF Database to SQL Server❌
 
