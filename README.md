@@ -30,6 +30,10 @@ To Do
 
 - Paytm Payment Gateway Response⌛ - paytm.com not working
 
+- PayPal Payment Template✔️
+
+- PayPal Payment Shop Products❌
+
 - Migrate MDF Database to SQL Server❌
 
 - Migrating to Bootstrap 4.5 Navbar❌
