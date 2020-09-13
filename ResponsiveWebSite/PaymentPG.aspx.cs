@@ -19,7 +19,18 @@ public partial class PaymentPG : System.Web.UI.Page
         if (Session["USERNAME"] != null)
         {
             if (!IsPostBack) {
+
+
+                string payerId = Request.Params["PayerID"];
+                if (!string.IsNullOrEmpty(payerId))
+                {
+                    PaymentWithPaypal();
+                }
+
+
                 BindPriceData();
+               
+
             }
         }
         else
@@ -32,10 +43,7 @@ public partial class PaymentPG : System.Web.UI.Page
     public void PaymentWithPaypal(string Cancel = null)
     {
         APIContext apiContext = PaypalConfiguration.GetAPIContext();
-        ////try
-        ////{
-        //A resource representing a Payer that funds a payment Payment Method as paypal  
-        //Payer Id will be returned when payment proceeds or click to pay  
+    
         string payerId = Request.Params["PayerID"];
         try
         {
@@ -44,7 +52,7 @@ public partial class PaymentPG : System.Web.UI.Page
             if (string.IsNullOrEmpty(payerId))
             {
                 string baseUrl = Request.Url.Scheme + "://" + Request.Url.Authority +
-                    "/PaymentPG?";
+                    "/PaymentPG.aspx?";
                 var Guid = Convert.ToString((new Random()).Next(1000000000));
                 var createPayment = CreatePayment(apiContext, baseUrl + "guid=" + Guid);
 
@@ -60,10 +68,10 @@ public partial class PaymentPG : System.Web.UI.Page
                 
             }
             else{
-                var guid = Request.Params["guid"];
-                var executePayment = ExecutePayment(apiContext, payerId, Session[guid] as string);
+                var paymentIdd = Request.Params["paymentId"];
+                Payment executePayment = ExecutePayment(apiContext, payerId, paymentIdd);
 
-                if (executePayment.ToString().ToLower()!= "approved") {
+                if (executePayment.state.ToString().ToLower()!= "approved") {
                     Response.Redirect("~/FailureView.aspx");
                 }
              }
@@ -75,7 +83,7 @@ public partial class PaymentPG : System.Web.UI.Page
         Response.Redirect("~/SuccessPayment.aspx");
     }
 
-    private object ExecutePayment(APIContext apicontext, string payerId, string PaymentId)
+    private Payment ExecutePayment(APIContext apicontext, string payerId, string PaymentId)
     {
         var paymentExecution = new PaymentExecution() { payer_id = payerId };
         payment = new Payment() { id = PaymentId };
@@ -128,7 +136,7 @@ public partial class PaymentPG : System.Web.UI.Page
             transactionList.Add(new Transaction()
             {
                 description = "Transaction Description",
-                invoice_number = "#100000",
+                invoice_number = Convert.ToString((new Random()).Next(1000000000)),
                 amount = amount,
                 item_list = ItemList
 
