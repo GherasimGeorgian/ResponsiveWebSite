@@ -34,6 +34,4 @@ To Do
 
 - PayPal Payment Shop Products❌
 
-- Migrate MDF Database to SQL Server❌
-
 - Migrating to Bootstrap 4.5 Navbar❌
